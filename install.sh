@@ -10,6 +10,8 @@ elif [ $(arch) == "x86_64" ];
   then ARCH=amd64
 fi
 
+mkdir -p /usr/src
+
 # Download release
 curl -L https://github.com/ansible-semaphore/semaphore/releases/download/v${VER}/semaphore_${VER}_linux_${ARCH}.tar.gz > \
 /usr/src/semaphore_${VER}_linux_${ARCH}.tar.gz

@@ -13,11 +13,11 @@ RUN apk --no-cache add \
         py3-cryptography \
         openssl \
         ca-certificates \
-        sshpass && \
-        git && \
-        curl && \
-        mysql-client && \
-        openssh-client && \
+        sshpass \
+        git \
+        curl \
+        mysql-client \
+        openssh-client \
         tini && \
     apk --no-cache add --virtual build-dependencies \
         python3-dev \
@@ -30,8 +30,9 @@ RUN apk --no-cache add \
     pip3 install --no-cache-dir --upgrade pywinrm pyVmomi ovh requests && \
     apk del build-dependencies && \
     pip3 cache purge && \
-    rm -rf /var/cache/apk/* && \
-    sh /tmp/install.sh ${SEMAPHORE_VERSION} && \
+    rm -rf /var/cache/apk/*
+
+RUN sh /tmp/install.sh ${SEMAPHORE_VERSION} && \
     adduser -D -u 1001 -G root semaphore && \
     mkdir -p /tmp/semaphore && \
     mkdir -p /etc/semaphore && \
