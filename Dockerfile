@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-glibc:alpine-3.10 as builder
+FROM alpine:3.10 as builder
 ENV ANSIBLE_VERSION="2.9.19"
 ENV SEMAPHORE_VERSION="2.6.8"
 
@@ -41,8 +41,6 @@ RUN sh /tmp/install.sh ${SEMAPHORE_VERSION} && \
     chmod a+x /usr/local/bin/semaphore-wrapper && \
     chown -R semaphore:0 /usr/local/bin/semaphore-wrapper &&\
     chown -R semaphore:0 /usr/local/bin/semaphore 
-
-
 
 FROM scratch as final
 
