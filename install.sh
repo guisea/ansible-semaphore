@@ -4,9 +4,9 @@ set -e
 
 VER=$1
 
-if [ $(arch) == "aarch64" ]; 
+if [ $(arch) = "aarch64" ]; 
   then ARCH=arm64
-elif [ $(arch) == "x86_64" ];
+elif [ $(arch) = "x86_64" ];
   then ARCH=amd64
 fi
 
